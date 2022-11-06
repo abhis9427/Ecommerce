@@ -73,18 +73,18 @@ exports.update = (req, res) => {
     });
 };
 
-exports.delete=(req,res)=>{
+exports.delete = (req, res) => {
+  const categoryId = req.params.id;
 
-    const categoryId = req.params.id;
-
-    Category.destroy({
-        where:{
-            id:categoryId
-        }
-    }).then((data)=>{
-        res.send({message:" data deleted "})
-    }).catch((err) => {
-        res.status(500).send({ message: "Somthing went wrong" });
-      });
-
-}
+  Category.destroy({
+    where: {
+      id: categoryId,
+    },
+  })
+    .then((data) => {
+      res.send({ message: " data deleted " });
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Somthing went wrong" });
+    });
+};
