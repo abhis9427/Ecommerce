@@ -48,3 +48,28 @@ exports.getOne = (req, res) => {
             res.status(500).send({ message: "Somthing went wrong" });
         })
 }
+
+exports.update = (req, res) => {
+    const categoryId = req.params.id;
+    const { name, description } = req.body;
+
+    const category = {};
+
+    if (name) {
+        category.name = name;
+    }
+    if (description) {
+        category.description = description;
+    }
+
+    Category.update(category,{
+        where:{id:categoryId}
+    })
+    .then((updatedCategory)=>{
+        res.send(updatedCategory);
+    })
+    .catch((err) => {
+        res.status(500).send({ message: "Somthing went wrong" });
+    })
+
+}

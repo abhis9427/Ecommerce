@@ -9,4 +9,6 @@ module.exports =(apps)=>{
     apps.get("/ecom/api/v1/category",categoryControllers.getAll)
     //get by id
     apps.get("/ecom/api/v1/category/:id",categoryControllers.getOne)
+    //update by id
+    apps.put("/ecom/api/v1/category/:id",categoryControllers.update)
 }
