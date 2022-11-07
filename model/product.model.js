@@ -21,6 +21,10 @@ module.exports = (Sequelize, sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      categoryId:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+      }
     },
     {
       tableName: "products",

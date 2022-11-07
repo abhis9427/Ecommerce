@@ -2,18 +2,22 @@ const db = require("../model");
 const Product = db.Product;
 
 exports.create = (req, res) => {
-  const { name, description, cost } = req.body;
+  const { name, description, cost, categoryId } = req.body;
 
   if (!name) {
     res.status(400).send({ message: "name cannot be empty" });
   }
   if (!cost) {
-    res.status(400).send({ message: "name cannot be empty" });
+    res.status(400).send({ message: "cost cannot be empty" });
+  }
+  if(!categoryId){
+    res.status(400).send({ message: "categoryId cannot be empty" });
   }
   const product = {
     name: name,
     description: description,
     cost: cost,
+    categoryId:categoryId
   };
 
   Product.create(product)
@@ -22,7 +26,7 @@ exports.create = (req, res) => {
       res.status(201).send(product);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Somthing went wrong" });
+      res.status(500).send({ message: "Somthing went wrong "});
     });
 };
 exports.getOne = (req, res) => {
