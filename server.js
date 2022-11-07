@@ -14,6 +14,7 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 
 require("./route/category.routes")(app);
+require("./route/product.routes")(app);
 
 app.get("/home", (req, res) => {
   res.send("hi");
