@@ -10,14 +10,14 @@ exports.create = (req, res) => {
   if (!cost) {
     res.status(400).send({ message: "cost cannot be empty" });
   }
-  if(!categoryId){
+  if (!categoryId) {
     res.status(400).send({ message: "categoryId cannot be empty" });
   }
   const product = {
     name: name,
     description: description,
     cost: cost,
-    categoryId:categoryId
+    categoryId: categoryId,
   };
 
   Product.create(product)
@@ -26,7 +26,7 @@ exports.create = (req, res) => {
       res.status(201).send(product);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Somthing went wrong "});
+      res.status(500).send({ message: "Somthing went wrong " });
     });
 };
 exports.getOne = (req, res) => {
@@ -46,5 +46,6 @@ exports.getOne = (req, res) => {
     });
 };
 exports.getAll = (req, res) => {};
+exports.getByCategory = (req, res) => {};
 exports.update = (req, res) => {};
 exports.delete = (req, res) => {};
